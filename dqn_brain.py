@@ -14,11 +14,10 @@ parser = argparse.ArgumentParser()
 parser.add_argument('--game_name', type=str, default='PongDeterministic-v4')
 parser.add_argument('--image_sequence_size', type=int, default=4)
 parser.add_argument('--max_no_games', type=int, default= 3000)
-parser.add_argument('--finish_greedy', type=int, default= 1000000)
-parser.add_argument('--observation_start', type=int, default= 50000)
+parser.add_argument('--observation_start', type=int, default= 50)
 parser.add_argument('--action_space', type=int, default= 3)
 parser.add_argument('--save_every', type=int, default= 50)
-parser.add_argument('--print_every', type=int, default = 25)
+parser.add_argument('--print_every', type=int, default = 5)
 args = parser.parse_args()
 
 
@@ -27,14 +26,15 @@ class DQN_Agent:
     def __init__(self, action_space):
         self.state_shape = (84,84,4)
         self.action_space = action_space
+        self.finish_greedy = 1000000
+        self.no_frames = 1
         self.gamma = 0.99
-        self.epsilon = 1.0
+        self.epsilon_start = 1.0
         self.epsilon_end = 0.05
-        self.epsilon_decay = 0.99999
         self.learning_rate = 0.00025
         self.model = self.build_model()
         self.batch_size = 32
-        self.experience = deque(maxlen=50000)
+        self.experience = deque(maxlen=100000)
 
     def atari_to_dqn(self,atari_action):
 
@@ -78,7 +78,16 @@ class DQN_Agent:
     def add_to_experience(self, state, action, reward, next_state, done):
         self.experience.append((state, action, reward, next_state, done))
 
+    def linear_e_greedy(self):
+        if self.no_frames <= self.finish_greedy:
+            e = ((self.epsilon_end - self.epsilon_start) / self.finish_greedy) * self.no_frames + self.epsilon_start
+        else:
+            e = self.epsilon_end
+        return e
+
     def get_action(self, state):
+
+        self.epsilon = self.linear_e_greedy()
         if np.random.rand() <= self.epsilon:
             action = random.randrange(self.action_space)
             action = self.dqn_to_atari(action)
@@ -115,8 +124,6 @@ class DQN_Agent:
             targets_f.append(target_f[0])
         history = self.model.fit(np.array(states), np.array(targets_f), epochs = 1, verbose = 0)
         loss = history.history['loss'][0]
-        if self.epsilon > self.epsilon_end:
-            self.epsilon *=self.epsilon_decay
         return loss
 
 def show(image):
@@ -131,11 +138,14 @@ def preprocess(frame):
 
 
 env = gym.make(args.game_name)
-DQN = DQN_Agent(action_space)
-no_frames = 0
+DQN = DQN_Agent(args.action_space)
 
-for episode in range(dupa):
-    total_score = []
+total_score = []
+total_loss = []
+
+
+for episode in range(1,args.max_no_games):
+
     observation_sequence = []
     observation = env.reset()
 
@@ -146,22 +156,21 @@ for episode in range(dupa):
         observation_sequence.append(observation_processed)
         some_action = 0
 
-        if len(observation_sequence) <= 4:
+        if len(observation_sequence) <= args.image_sequence_size:
 
             observation, reward, done, info = env.step(some_action)
 
         else:
             observation_sequence.pop(0)
             state = np.stack([observation_sequence[0],
-                                           observation_sequence[1],
-                                           observation_sequence[2],
-                                           observation_sequence[3]],
-                                           axis = 2)
+                              observation_sequence[1],
+                              observation_sequence[2],
+                              observation_sequence[3]], axis = 2)
 
             action = DQN.get_action(state)
             new_observation, reward, done, _ = env.step(action)
             total_score.append(reward)
-            no_frames = no_frames + 1
+            DQN.no_frames = DQN.no_frames + 1
             new_observation_processed = preprocess(new_observation)
 
             new_state = np.stack([observation_sequence[1],
@@ -175,13 +184,20 @@ for episode in range(dupa):
 
             observation = new_observation
 
-            if len(DQN.experience) > 25000 and no_frames%10==0:
+            if len(DQN.experience) > args.observation_start:
                 loss = DQN.train()
+                total_loss.append(loss)
 
             if done:
-                print("episode: {}/{}, score: {}, e: {:.2}, memory len: {}"
-                      .format(episode, dupa, np.sum(total_score), DQN.epsilon, len(DQN.experience)))
+                if episode % args.print_every ==0:
+                    print("episode: {}/{}, score: {}, loss: {}, e: {:.4}, memory len: {}"
+                          .format(episode, args.max_no_games, np.sum(total_score)/args.print_every, np.mean(total_loss), DQN.epsilon, len(DQN.experience)))
+                    total_score = []
+                    total_loss = []
+
                 break
+
+
 
 
 
