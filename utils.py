@@ -6,6 +6,7 @@ import numpy as np
 import cv2
 
 
+
 def preprocess_observation(observation):
     observation = tf.image.rgb_to_grayscale(observation)
     observation = tf.image.resize(observation, size=[110, 84])
