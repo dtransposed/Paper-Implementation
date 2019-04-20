@@ -20,7 +20,7 @@ parser.add_argument('--action_space', type=int, default= 3)
 parser.add_argument('--save_every', type=int, default= 100)
 parser.add_argument('--print_every', type=int, default = 20)
 args = parser.parse_args()
-
+#loss=tf.losses.huber_loss
 
 class DQN_Agent:
 
@@ -66,6 +66,12 @@ class DQN_Agent:
 
         return dict_dqn_to_atari[dqn_action]
 
+    def uint_to_float(self, state):
+        return state.astype('float32') / 255
+
+    def update_target_model(self):
+        self.target_model.set_weights(self.model.get_weights())
+
     def build_model(self):
         model = Sequential()
         model.add(Conv2D(input_shape=self.state_shape, kernel_size = 8, strides = 4, filters = 8, activation='relu'))
@@ -78,7 +84,7 @@ class DQN_Agent:
         return model
 
     def add_to_experience(self, state, action, reward, next_state, done):
-        self.experience.append((state, action, reward, next_state, done))
+        self.experience.append((state, self.atari_to_dqn(action), reward, next_state, done))
 
     def linear_e_greedy(self):
         if self.no_frames <= self.finish_greedy:
@@ -89,10 +95,10 @@ class DQN_Agent:
 
     def get_action(self, state):
 
-        epsilon = self.linear_e_greedy()
-        if np.random.rand() <= epsilon:
+        self.epsilon = self.linear_e_greedy()
+        if np.random.rand() <= self.epsilon:
             action = random.randrange(self.action_space)
-            return dqn_to_atari(action)
+            return self.dqn_to_atari(action)
 
         else:
             state = state.astype('float32') / 255
@@ -104,9 +110,7 @@ class DQN_Agent:
 
     def train(self):
 
-        ##TODO## implement smart batch training
         minibatch = random.sample(self.experience, self.batch_size)
-
 
         batch_state = [data[0] for data in minibatch]
         batch_action = [data[1] for data in minibatch]
@@ -114,9 +118,11 @@ class DQN_Agent:
         batch_next_state = [data[3] for data in minibatch]
         batch_done = [data[4] for data in minibatch]
 
-        predicted_next_state = self.model.predict(np.array(batch_next_state).astype('float32') / 255)
-        predicted_state = self.model.predict(np.array(batch_state).astype('float32') / 255)
+        batch_state = self.uint_to_float(np.array(batch_state))
+        batch_next_state = self.uint_to_float(np.array(batch_next_state))
 
+        predicted_state = self.model.predict(batch_state)
+        predicted_next_state = self.target_model.predict(batch_next_state)
 
         for i in range(self.batch_size):
 
@@ -125,21 +131,18 @@ class DQN_Agent:
             else:
                 target = batch_reward[i] + self.gamma * np.amax(predicted_next_state[i])
 
-            predicted_state[i][self.atari_to_dqn(batch_action[i])] = target
+            predicted_state[i][batch_action[i]] = target
 
-        history = self.model.fit(np.array(batch_state).astype('float32') / 255, predicted_state, epochs = 1, verbose = 0)
+        history = self.model.fit(batch_state, predicted_state, epochs=1, verbose=0)
         loss = history.history['loss'][0]
         return loss
 
-def show(image):
-    cv2.imshow('image', image)
-    cv2.waitKey(1000)
+
 def preprocess(frame):
-    frame = frame[35:195,:]
+    frame = frame[35:195, :]
     frame = rgb2gray(frame)*255
     frame = resize(frame, (84, 84))
     return frame.astype(np.uint8)
-
 
 
 env = gym.make(args.game_name)
@@ -149,8 +152,7 @@ total_score = []
 total_loss = []
 
 
-
-for episode in range(1,args.max_no_games):
+for episode in range(1, args.max_no_games):
 
     observation_sequence = []
     observation = env.reset()
@@ -171,7 +173,7 @@ for episode in range(1,args.max_no_games):
             state = np.stack([observation_sequence[0],
                               observation_sequence[1],
                               observation_sequence[2],
-                              observation_sequence[3]], axis = 2)
+                              observation_sequence[3]], axis=2)
 
             action = DQN.get_action(state)
             new_observation, reward, done, _ = env.step(action)
@@ -180,11 +182,9 @@ for episode in range(1,args.max_no_games):
             new_observation_processed = preprocess(new_observation)
 
             new_state = np.stack([observation_sequence[1],
-                                           observation_sequence[2],
-                                           observation_sequence[3],
-                                           new_observation_processed],
-                                           axis = 2)
-
+                                  observation_sequence[2],
+                                  observation_sequence[3],
+                                  new_observation_processed], axis=2)
 
             DQN.add_to_experience(state, action, reward, new_state, done)
 
@@ -193,14 +193,18 @@ for episode in range(1,args.max_no_games):
             if len(DQN.experience) > args.observation_start:
                 loss = DQN.train()
                 total_loss.append(loss)
+                if DQN.no_frames % args.target_frequency_update == 0:
+                    DQN.update_target_model()
 
             if done:
-                if episode % args.print_every ==0:
+                if episode % args.print_every == 0:
                     print("episode: {}/{}, mean_q: {} score: {}, loss: {}, e: {:.4}, memory len: {}"
                           .format(episode, args.max_no_games, np.mean(DQN.Q_list), np.sum(total_score)/args.print_every, np.mean(total_loss), DQN.epsilon, len(DQN.experience)))
                     total_score = []
                     total_loss = []
                     DQN.Q_list = []
+
+                #if epie % args.save_every == 0:sod
 
                 break
 
