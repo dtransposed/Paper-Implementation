@@ -13,30 +13,34 @@ import argparse
 parser = argparse.ArgumentParser()
 parser.add_argument('--game_name', type=str, default='PongDeterministic-v4')
 parser.add_argument('--image_sequence_size', type=int, default=4)
-parser.add_argument('--max_no_games', type=int, default= 3000)
-parser.add_argument('--observation_start', type=int, default= 50)
+parser.add_argument('--max_no_games', type=int, default= 2000)
+parser.add_argument('--observation_start', type=int, default= 50000)
+parser.add_argument('--target_frequency_update', type=int, default=1000)
 parser.add_argument('--action_space', type=int, default= 3)
-parser.add_argument('--save_every', type=int, default= 50)
-parser.add_argument('--print_every', type=int, default = 5)
+parser.add_argument('--save_every', type=int, default= 100)
+parser.add_argument('--print_every', type=int, default = 20)
 args = parser.parse_args()
 
 
-
 class DQN_Agent:
+
     def __init__(self, action_space):
-        self.state_shape = (84,84,4)
+        self.state_shape = (84, 84, 4)
         self.action_space = action_space
-        self.finish_greedy = 1000000
+        self.finish_greedy = 500000
         self.no_frames = 1
         self.gamma = 0.99
         self.epsilon_start = 1.0
         self.epsilon_end = 0.05
         self.learning_rate = 0.00025
         self.model = self.build_model()
+        self.target_model = self.build_model()
         self.batch_size = 32
         self.experience = deque(maxlen=100000)
+        self.Q_list = []
 
-    def atari_to_dqn(self,atari_action):
+    def atari_to_dqn(self, atari_action):
+        # ATARI: 0: nothing, 1: nothing, 2: up, 3: down, 4: up,5: down
 
         action_up = 0
         action_down = 1
@@ -50,7 +54,8 @@ class DQN_Agent:
 
         return dict_atari_to_dqn[atari_action]
 
-    def dqn_to_atari(self,dqn_action):
+    def dqn_to_atari(self, dqn_action):
+        # DQN 0: nothing, 1: up, 2: down
 
         action_up = 0
         action_down = 1
@@ -60,8 +65,6 @@ class DQN_Agent:
                              action_down: 3}
 
         return dict_dqn_to_atari[dqn_action]
-
-
 
     def build_model(self):
         model = Sequential()
@@ -73,7 +76,6 @@ class DQN_Agent:
         model.compile(loss='mse',
                       optimizer=Adam(lr=self.learning_rate))
         return model
-
 
     def add_to_experience(self, state, action, reward, next_state, done):
         self.experience.append((state, action, reward, next_state, done))
@@ -87,42 +89,45 @@ class DQN_Agent:
 
     def get_action(self, state):
 
-        self.epsilon = self.linear_e_greedy()
-        if np.random.rand() <= self.epsilon:
+        epsilon = self.linear_e_greedy()
+        if np.random.rand() <= epsilon:
             action = random.randrange(self.action_space)
-            action = self.dqn_to_atari(action)
-            return action
+            return dqn_to_atari(action)
 
         else:
             state = state.astype('float32') / 255
             state = np.expand_dims(state, axis=0)
             q_values = self.model.predict(state)
             action = np.argmax(q_values[0])
+            self.Q_list.append(np.max(q_values))
             return self.dqn_to_atari(action)
 
     def train(self):
 
         ##TODO## implement smart batch training
         minibatch = random.sample(self.experience, self.batch_size)
-        states = []
-        targets_f = []
 
-        for state, action, reward, next_state, done in minibatch:
-            state = state.astype('float32')/255
-            state = np.expand_dims(state, axis = 0)
-            next_state = next_state.astype('float32')/255
-            next_state = np.expand_dims(next_state, axis=0)
 
-            if done:
-                target = reward
+        batch_state = [data[0] for data in minibatch]
+        batch_action = [data[1] for data in minibatch]
+        batch_reward = [data[2] for data in minibatch]
+        batch_next_state = [data[3] for data in minibatch]
+        batch_done = [data[4] for data in minibatch]
+
+        predicted_next_state = self.model.predict(np.array(batch_next_state).astype('float32') / 255)
+        predicted_state = self.model.predict(np.array(batch_state).astype('float32') / 255)
+
+
+        for i in range(self.batch_size):
+
+            if batch_done[i]:
+                target = batch_reward[i]
             else:
-                target = reward + self.gamma * np.amax(self.model.predict(next_state)[0])
-            target_f = self.model.predict(state)
+                target = batch_reward[i] + self.gamma * np.amax(predicted_next_state[i])
 
-            target_f[0][self.atari_to_dqn(action)] = target
-            states.append(state[0])
-            targets_f.append(target_f[0])
-        history = self.model.fit(np.array(states), np.array(targets_f), epochs = 1, verbose = 0)
+            predicted_state[i][self.atari_to_dqn(batch_action[i])] = target
+
+        history = self.model.fit(np.array(batch_state).astype('float32') / 255, predicted_state, epochs = 1, verbose = 0)
         loss = history.history['loss'][0]
         return loss
 
@@ -142,6 +147,7 @@ DQN = DQN_Agent(args.action_space)
 
 total_score = []
 total_loss = []
+
 
 
 for episode in range(1,args.max_no_games):
@@ -190,10 +196,11 @@ for episode in range(1,args.max_no_games):
 
             if done:
                 if episode % args.print_every ==0:
-                    print("episode: {}/{}, score: {}, loss: {}, e: {:.4}, memory len: {}"
-                          .format(episode, args.max_no_games, np.sum(total_score)/args.print_every, np.mean(total_loss), DQN.epsilon, len(DQN.experience)))
+                    print("episode: {}/{}, mean_q: {} score: {}, loss: {}, e: {:.4}, memory len: {}"
+                          .format(episode, args.max_no_games, np.mean(DQN.Q_list), np.sum(total_score)/args.print_every, np.mean(total_loss), DQN.epsilon, len(DQN.experience)))
                     total_score = []
                     total_loss = []
+                    DQN.Q_list = []
 
                 break
 
