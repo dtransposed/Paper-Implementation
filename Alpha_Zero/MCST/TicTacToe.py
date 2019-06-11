@@ -12,10 +12,13 @@ class OXOState:
         -----
         6|7|8
 
+        0 = empty
+        1 = player 1
+        2 = player 2
         """
         self.playerJustMoved = 2    # Assuming P2 just made a move,
                                     # Player1 now starts the game.
-        self.board = [int(0)] * 9
+        self.board = [0] * 9
         self.winning_combinations = [(0, 1, 2),
                                      (3, 4, 5),
                                      (6, 7, 8),
@@ -37,14 +40,15 @@ class OXOState:
         """
         cloned_state = OXOState()
         cloned_state.playerJustMoved = self.playerJustMoved
-        cloned_state.board = self.board
+        cloned_state.board = self.board[:]
+        return cloned_state
 
     def DoMove(self, move):
         """
         Do a legal move.
         """
 
-        assert 0 <= move < 9
+        assert 0 <= move <= 8
         assert move == int(move)
         assert self.board[move] == 0
 
@@ -69,6 +73,7 @@ class OXOState:
                     return 0.0
         if self.GetMoves() == []:
             return 0.5
+        assert False
 
             # assert function returns something
 
