@@ -2,8 +2,10 @@ from TicTacToe import TicTacToeGame
 import numpy as np
 import random
 
+
 class Node():
-    def __init__(self, move = None, parent = None, state = None):
+
+    def __init__(self, move=None, parent=None, state=None):
         self.move = move
         self.parent_node = parent
         self.child_nodes = []
@@ -17,7 +19,7 @@ class Node():
         return s
 
     def add_child(self, move, state):
-        new_child_node = Node(move = move, parent = self, state = state)
+        new_child_node = Node(move =move, parent=self, state=state)
         self.untried_moves.remove(move)
         self.child_nodes.append(new_child_node)
         return new_child_node
@@ -26,9 +28,10 @@ class Node():
         self.Q = self.Q + result
         self.N = self.N + 1
 
+
 def uct(root_state, max_iterations):
 
-    root_node = Node(state = root_state)
+    root_node = Node(state=root_state)
 
     for i in range(max_iterations):
         node = root_node
@@ -57,21 +60,35 @@ def uct(root_state, max_iterations):
     return sorted(root_node.child_nodes, key=lambda c: c.N)[-1].move
 
 def play_UCT():
-    np.random.seed(123)
     state = TicTacToeGame()
+    print("Welcome to the game. You will face UCT-trained AI opponent.")
+    human_turn = True
+    if random.random() < 0.5:
+        print('Human starts the game!\n')
+    else:
+        print('AI starts the game\n')
+        human_turn = False
 
-    while (state.get_moves() != []):
-        print(str(state))
-        if state.player_just_moved == 1:
-            move = uct(root_state=state, max_iterations = 1000)
+    human_started = human_turn
+
+    while state.get_moves() != []:
+        if human_turn:
+            print(str(state))
+            move = int(input('Please choose the field:\n'))
+            state.do_move(move)
+            human_turn = False
+
         else:
-            move = uct(root_state=state, max_iterations = 100)
-        print("Best Move: {}".format(move))
-        state.do_move(move)
-    if state.get_result(state.player_just_moved) == 1.0:
-        print("Player {} wins!".format(state.player_just_moved))
-    elif state.get_result(state.player_just_moved) == 0.0:
-        print("Player {} wins!".format(3- state.player_just_moved))
+            move = uct(root_state=state, max_iterations = 5000)
+            state.do_move(move)
+            human_turn = True
+
+    if (state.get_result(state.player_just_moved) == 1.0 and human_started) or \
+            (state.get_result(state.player_just_moved) == 0.0 and not human_started):
+        print("AI wins!".format(state.player_just_moved))
+    elif (state.get_result(state.player_just_moved) == 0.0 and human_started) or \
+            (state.get_result(state.player_just_moved) == 1.0 and not human_started):
+        print("Human wins!".format(3- state.player_just_moved))
     else:
         print("Draw!")
 
