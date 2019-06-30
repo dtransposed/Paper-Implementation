@@ -1,91 +1,64 @@
+import numpy as np
 
-class OXOState:
+class TicTacToeGame():
+
+    """
+    0 1 2 3
+    4 5 6 7
+    8 9 10 11
+    12 13 14 15
+    """
+
     def __init__(self):
-        """
-        Start the TicTacToe board.
-        Player1 starts his move on the 3x3 board.
-        Those are the indices of the TicTacToe board:
+        self.no_fields = 16
+        self.player_just_moved = 2
+        self.board = [0]*self.no_fields
+        self.winning_combinations = [
+                                    (0, 1, 2, 3),
+                                    (4, 5, 6 ,7),
+                                    (8, 9, 10, 11),
+                                    (12, 13, 14, 15),
 
-        0|1|2
-        -----
-        3|4|5
-        -----
-        6|7|8
+                                    (0, 4, 8, 12),
+                                    (1, 5, 9, 13),
+                                    (2, 6, 10, 14),
+                                    (3, 7, 11, 15),
 
-        0 = empty
-        1 = player 1
-        2 = player 2
-        """
-        self.playerJustMoved = 2    # Assuming P2 just made a move,
-                                    # Player1 now starts the game.
-        self.board = [0] * 9
-        self.winning_combinations = [(0, 1, 2),
-                                     (3, 4, 5),
-                                     (6, 7, 8),
+                                    (0, 5, 10, 15),
+                                    (3, 6, 9, 12)]
 
-                                     (0, 3, 6),
-                                     (1, 4, 7),
-                                     (2, 5, 8),
-
-                                     (0, 4, 8),
-                                     (2, 4, 6)]
-
-    def Clone(self):
-        """
-        Clone state of the game.
-        This include two pieces of information:
-        self.playerJustMoved - which player has just made its move
-        self.board - current state of the board
-        :return:
-        """
-        cloned_state = OXOState()
-        cloned_state.playerJustMoved = self.playerJustMoved
+    def clone(self):
+        cloned_state = TicTacToeGame()
+        cloned_state.player_just_moved = self.player_just_moved
         cloned_state.board = self.board[:]
         return cloned_state
 
-    def DoMove(self, move):
-        """
-        Do a legal move.
-        """
-
-        assert 0 <= move <= 8
+    def do_move(self, move):
+        assert move >= 0
+        assert move <= self.no_fields - 1
         assert move == int(move)
-        assert self.board[move] == 0
+        assert self.board[move] ==0
 
-        self.playerJustMoved = 3 - self.playerJustMoved
-        self.board[move] = self.playerJustMoved
+        self.player_just_moved = 3 - self.player_just_moved
+        self.board[move] = self.player_just_moved
 
-    def GetMoves(self):
-        """
-        Obtain a list of all legal moves
-        """
-        return [i for i in range(9) if self.board[i] == 0]
+    def get_moves(self):
+        return [i for i in range(self.no_fields) if self.board[i] ==0]
 
-    def GetResult(self, player):
-        """
-        Get result of the game from point of view of the specified player
-        """
-        for (x, y, z) in self.winning_combinations:
-            if self.board[x] == self.board[y] == self.board[z]:
-                if self.board[x] == player:
+    def get_result(self, current_player):
+        for (w, x, y, z) in self.winning_combinations:
+            if self.board[w] == self.board[x] == self.board[y] == self.board[z]:
+                if self.board[w] == current_player:
                     return 1.0
                 else:
                     return 0.0
-        if self.GetMoves() == []:
-            return 0.5
+        if self.get_moves() == []: return 0.5
         assert False
-
-            # assert function returns something
 
     def __repr__(self):
         s = ""
-        for i in range(9):
-            s += ".XO"[self.board[i]]
-            if i % 3 == 2: s += "\n"
-
+        for i in range(self.no_fields):
+            s+=".XO"[self.board[i]]
+            if i % int(np.sqrt(self.no_fields)) ==3: s+= "\n"
         return s
-
-
-
-
 

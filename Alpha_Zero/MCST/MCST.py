@@ -1,96 +1,86 @@
-from math import *
-from TicTacToe import OXOState
+from TicTacToe import TicTacToeGame
+import numpy as np
 import random
 
-class Node:
-    def __init__(self, move = None, parent = None, state= None):
-        self.move = move    # Move that got us to that node
-        self.parentNode = parent    # "None" if root node
-        self.childNodes = []
-        self.wins = 0
-        self.visits = 0
-        self.untriedMoves = state.GetMoves()    # Future child nodes to be explored
-        self.playerJustMoved = state.playerJustMoved
+class Node():
+    def __init__(self, move = None, parent = None, state = None):
+        self.move = move
+        self.parent_node = parent
+        self.child_nodes = []
+        self.Q = 0
+        self.N = 0
+        self.untried_moves = state.get_moves()
+        self.player_just_moved = state.player_just_moved
 
-    def UCTSelectChild(self):
-        s = sorted(self.childNodes, key=lambda c: c.wins / c.visits + sqrt(2 * log(self.visits) / c.visits))[-1]
+    def select_child(self):
+        s = sorted(self.child_nodes, key=lambda c: c.Q / c.N + np.sqrt(2 * np.log(self.N) / c.N))[-1]
         return s
 
-    def AddChild(self, move, state):
-        n = Node(move=move, parent=self, state=state)
-        self.untriedMoves.remove(move)
-        self.childNodes.append(n)
-        return n
+    def add_child(self, move, state):
+        new_child_node = Node(move = move, parent = self, state = state)
+        self.untried_moves.remove(move)
+        self.child_nodes.append(new_child_node)
+        return new_child_node
 
-    def Update(self, result):
-        self.visits = self.visits + 1
-        self.wins = self.wins + result  # Result from POV of PlayerJustMoved
+    def update(self, result):
+        self.Q = self.Q + result
+        self.N = self.N + 1
 
+def uct(root_state, max_iterations):
 
-def UCT(rootstate, itermax, verbose = False):
+    root_node = Node(state = root_state)
 
-    rootnode = Node(state=rootstate)
+    for i in range(max_iterations):
+        node = root_node
+        state = root_state.clone()
 
-    for i in range(itermax):
-        node = rootnode
-        state = rootstate.Clone()
+        ## SELECTION ##
+        while node.untried_moves == [] and node.child_nodes != []:
+            node = node.select_child()
+            state.do_move(node.move)
 
-        # SELECTION
-        # Starting at root node, recursively select optimal child nodes until
-        # leaf node L is reached
+        ## EXPANSION ##
+        if node.untried_moves != []:
+            move = random.choice(node.untried_moves)
+            state.do_move(move)
+            node = node.add_child(move, state)
 
-        while node.untriedMoves == [] and node.childNodes != []:
-            node = node.UCTSelectChild()
-            state.DoMove(node.move)
+        ## ROLLOUT ##
+        while state.get_moves() != []:
+            state.do_move(random.choice(state.get_moves()))
 
-        # EXPANSION
-        # If L is not a terminal node, create one or more child nodes and
-        # select one C
-
-        if node.untriedMoves != []:
-            m = random.choice(node.untriedMoves)
-            state.DoMove(m)
-            node = node.AddChild(m, state)
-
-        # ROLLOUT
-        # Run a simulated playout from C until a result is achieved
-
-        while state.GetMoves() !=[]:
-            state.DoMove(random.choice(state.GetMoves()))
-
-        # BACKPROPAGATION
-        # Update the current move sequence with the simulation
-        # results
-
+        ## UPDATE ##
         while node != None:
-            node.Update(state.GetResult(node.playerJustMoved))
-            node = node.parentNode
+            node.update(state.get_result(node.player_just_moved))
+            node = node.parent_node
 
-    return sorted(rootnode.childNodes, key = lambda c: c.visits)[-1].move
+    return sorted(root_node.child_nodes, key=lambda c: c.N)[-1].move
 
+def play_UCT():
+    np.random.seed(123)
+    state = TicTacToeGame()
 
-
-
-
-def UCTPlayGame():
-
-    state = OXOState()
-
-    while (state.GetMoves() != []):
+    while (state.get_moves() != []):
         print(str(state))
-        if state.playerJustMoved == 1:
-            m = UCT(rootstate = state, itermax = 1000, verbose = False) # play with values for itermax and verbose = True
+        if state.player_just_moved == 1:
+            move = uct(root_state=state, max_iterations = 1000)
         else:
-            m = UCT(rootstate = state, itermax = 100, verbose = False)
-        print("Best Move: " + str(m) + "\n")
-        state.DoMove(m)
-    if state.GetResult(state.playerJustMoved) == 1.0:
-        print("Player " + str(state.playerJustMoved) + " wins!")
-    elif state.GetResult(state.playerJustMoved) == 0.0:
-        print("Player " + str(3 - state.playerJustMoved) + " wins!")
-    else: print("Nobody wins!")
+            move = uct(root_state=state, max_iterations = 100)
+        print("Best Move: {}".format(move))
+        state.do_move(move)
+    if state.get_result(state.player_just_moved) == 1.0:
+        print("Player {} wins!".format(state.player_just_moved))
+    elif state.get_result(state.player_just_moved) == 0.0:
+        print("Player {} wins!".format(3- state.player_just_moved))
+    else:
+        print("Draw!")
 
 
-if __name__ == "__main__":
-    UCTPlayGame()
+
+
+
+
+
+
+
 
