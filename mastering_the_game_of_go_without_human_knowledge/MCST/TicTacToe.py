@@ -1,7 +1,7 @@
 import numpy as np
 
 
-class TicTacToeGame():
+class TicTacToeGame:
     """
     State of our board:
 
@@ -12,6 +12,7 @@ class TicTacToeGame():
     08|09|10|11
     -----------
     12|13|14|15
+
     """
 
     def __init__(self):

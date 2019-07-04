@@ -3,7 +3,7 @@ import numpy as np
 import random
 
 
-class Node():
+class Node:
 
     def __init__(self, move=None, parent=None, state=None):
         self.move = move
@@ -59,7 +59,8 @@ def uct(root_state, max_iterations):
 
     return sorted(root_node.child_nodes, key=lambda c: c.N)[-1].move
 
-def play_UCT():
+
+def play_UCT:
     state = TicTacToeGame()
     print("Welcome to the game. You will face UCT-trained AI opponent.")
     human_turn = True
