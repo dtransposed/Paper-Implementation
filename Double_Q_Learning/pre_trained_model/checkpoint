@@ -1,2 +1,0 @@
-model_checkpoint_path: "DQN-episode-400"
-all_model_checkpoint_paths: "DQN-episode-400"

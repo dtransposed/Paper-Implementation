@@ -10,9 +10,16 @@ gym = {extras = ["atari"],version = "*"}
 opencv-python = "*"
 numpy = "*"
 matplotlib = "*"
-tensorflow = "==2.0.0-alpha0"
 keras = "*"
 scikit-image = "*"
+pandas = "*"
+sklearn = "*"
+tensorflow-gpu = "==2.0.0-beta1"
+skip-lock = "*"
+seaborn = "*"
+tensorflow-probability = "*"
+opster = "*"
+image = "*"
 
 [requires]
 python_version = "3.6"

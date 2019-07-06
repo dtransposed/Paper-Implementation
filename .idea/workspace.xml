@@ -2,13 +2,68 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2495d37d-569c-40ee-9fc0-5a302c7bb22f" name="Default Changelist" comment="Finish DQN coding">
-      <change afterPath="$PROJECT_DIR$/.idea/Paper-Implementation.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/additional/plot_results.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/additional/training_data.data" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Alpha_Zero/.config.py.swp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Alpha_Zero/MCST/MCST.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Alpha_Zero/MCST/TicTacToe.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Alpha_Zero/MCST/run.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Alpha_Zero/Minmax/Ads_CTR_Optimisation.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Alpha_Zero/Minmax/minmax.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Alpha_Zero/Minmax/simple_minmax.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Alpha_Zero/UCB/UCB.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Alpha_Zero/config.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Attention/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/Attention/model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Attention/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/Attention/utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Double_Q_Learning/DQN_Model.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Double_Q_Learning/DQN_brain.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Double_Q_Learning/images/movie.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Double_Q_Learning/images/pyplot_multiple_y-axis.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Double_Q_Learning/pre_trained_model/DQN-episode-300.data-00000-of-00001" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Double_Q_Learning/pre_trained_model/DQN-episode-300.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Double_Q_Learning/pre_trained_model/checkpoint" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Double_Q_Learning/test.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Double_Q_Learning/train.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Double_Q_Learning/utils.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Human-level Control Through Deep Reinforcement Learning (Mnih et al. 2015)/DQN_Model.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Human-level Control Through Deep Reinforcement Learning (Mnih et al. 2015)/DQN_brain.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Human-level Control Through Deep Reinforcement Learning (Mnih et al. 2015)/images/movie.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Human-level Control Through Deep Reinforcement Learning (Mnih et al. 2015)/images/pyplot_multiple_y-axis.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Human-level Control Through Deep Reinforcement Learning (Mnih et al. 2015)/pre_trained_model/DQN-episode-300.data-00000-of-00001" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Human-level Control Through Deep Reinforcement Learning (Mnih et al. 2015)/pre_trained_model/DQN-episode-300.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Human-level Control Through Deep Reinforcement Learning (Mnih et al. 2015)/pre_trained_model/checkpoint" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Human-level Control Through Deep Reinforcement Learning (Mnih et al. 2015)/test.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Human-level Control Through Deep Reinforcement Learning (Mnih et al. 2015)/train.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Human-level Control Through Deep Reinforcement Learning (Mnih et al. 2015)/utils.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mastering the Game of Go without Human Knowledge ( Silver et al. 2017)/.config.py.swp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mastering the Game of Go without Human Knowledge ( Silver et al. 2017)/MCST/MCST.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mastering the Game of Go without Human Knowledge ( Silver et al. 2017)/MCST/TicTacToe.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mastering the Game of Go without Human Knowledge ( Silver et al. 2017)/MCST/run.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mastering the Game of Go without Human Knowledge ( Silver et al. 2017)/MCST/step015.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mastering the Game of Go without Human Knowledge ( Silver et al. 2017)/MCST/step016.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mastering the Game of Go without Human Knowledge ( Silver et al. 2017)/MCST/step017.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mastering the Game of Go without Human Knowledge ( Silver et al. 2017)/MCST/step018.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mastering the Game of Go without Human Knowledge ( Silver et al. 2017)/MCST/step019.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mastering the Game of Go without Human Knowledge ( Silver et al. 2017)/MCST/step020.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mastering the Game of Go without Human Knowledge ( Silver et al. 2017)/MCST/step021.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mastering the Game of Go without Human Knowledge ( Silver et al. 2017)/MCST/step022.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mastering the Game of Go without Human Knowledge ( Silver et al. 2017)/MCST/step023.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mastering the Game of Go without Human Knowledge ( Silver et al. 2017)/MCST/step024.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mastering the Game of Go without Human Knowledge ( Silver et al. 2017)/MCST/step025.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mastering the Game of Go without Human Knowledge ( Silver et al. 2017)/MCST/step026.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mastering the Game of Go without Human Knowledge ( Silver et al. 2017)/MCST/step027.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mastering the Game of Go without Human Knowledge ( Silver et al. 2017)/MCST/step028.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mastering the Game of Go without Human Knowledge ( Silver et al. 2017)/MCST/step029.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mastering the Game of Go without Human Knowledge ( Silver et al. 2017)/MCST/step030.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mastering the Game of Go without Human Knowledge ( Silver et al. 2017)/MCST/step031.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mastering the Game of Go without Human Knowledge ( Silver et al. 2017)/MCST/tty2gif.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mastering the Game of Go without Human Knowledge ( Silver et al. 2017)/MCST/ttyrecord" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mastering the Game of Go without Human Knowledge ( Silver et al. 2017)/Minmax/Ads_CTR_Optimisation.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mastering the Game of Go without Human Knowledge ( Silver et al. 2017)/Minmax/minmax.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mastering the Game of Go without Human Knowledge ( Silver et al. 2017)/Minmax/simple_minmax.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mastering the Game of Go without Human Knowledge ( Silver et al. 2017)/UCB/UCB.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mastering the Game of Go without Human Knowledge ( Silver et al. 2017)/config.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pipfile" beforeDir="false" afterPath="$PROJECT_DIR$/Pipfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -17,7 +72,74 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Attention/train.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="11" column="56" selection-start-line="11" selection-start-column="56" selection-end-line="11" selection-end-column="56" />
+              <folding>
+                <element signature="e#0#11#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Attention/utils.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="850">
+              <caret line="55" selection-start-line="55" selection-end-line="55" />
+              <folding>
+                <element signature="e#0#49#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mastering_the_game_of_go_without_human_knowledge/MCST/MCST.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1173">
+              <caret line="71" selection-start-line="71" selection-end-line="71" />
+              <folding>
+                <element signature="e#0#35#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/mastering_the_game_of_go_without_human_knowledge/MCST/run.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="4" selection-start-line="4" selection-end-line="4" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mastering_the_game_of_go_without_human_knowledge/MCST/TicTacToe.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1037">
+              <caret line="61" column="45" selection-start-line="61" selection-start-column="45" selection-end-line="61" selection-end-column="45" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Attention/model.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="306">
+              <caret line="20" column="44" selection-start-line="20" selection-start-column="44" selection-end-line="20" selection-end-column="44" />
+              <folding>
+                <element signature="e#0#75#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -32,13 +154,27 @@
       <find>action</find>
       <find>DQN</find>
       <find>lr</find>
-      <find>print</find>
       <find>self.self</find>
       <find>print(actio</find>
       <find>expand</find>
       <find>e_end</find>
       <find>tf</find>
       <find>model</find>
+      <find>min</find>
+      <find>expand_dims</find>
+      <find>units</find>
+      <find>vocab_size</find>
+      <find>OXO</find>
+      <find>PRINT</find>
+      <find>play</find>
+      <find>impro</find>
+      <find>GetMove</find>
+      <find>Get</find>
+      <find>Clone</find>
+      <find>choice</find>
+      <find>shape</find>
+      <find>16</find>
+      <find>print</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -55,30 +191,46 @@
         <option value="$PROJECT_DIR$/plot_diagramm.py" />
         <option value="$PROJECT_DIR$/test.py" />
         <option value="$PROJECT_DIR$/plot_results.py" />
-      </list>
-    </option>
-  </component>
-  <component name="ProjectConfigurationFiles">
-    <option name="files">
-      <list>
-        <option value="$PROJECT_DIR$/.idea/Paper-Implementation.iml" />
-        <option value="$PROJECT_DIR$/.idea/vcs.xml" />
-        <option value="$PROJECT_DIR$/.idea/misc.xml" />
-        <option value="$PROJECT_DIR$/.idea/modules.xml" />
+        <option value="$PROJECT_DIR$/Alpha_Zero/Minmax/minmax.py" />
+        <option value="$PROJECT_DIR$/Alpha_Zero/Minmax/simple_minmax.py" />
+        <option value="$PROJECT_DIR$/Attention/tutorial.py" />
+        <option value="$PROJECT_DIR$/Double_Q_Learning/train.py" />
+        <option value="$PROJECT_DIR$/Alpha_Zero/MCST.py" />
+        <option value="$PROJECT_DIR$/Alpha_Zero/TicTacToe/tictactoe.py" />
+        <option value="$PROJECT_DIR$/Alpha_Zero/TicTacToe/mcts.py" />
+        <option value="$PROJECT_DIR$/Alpha_Zero/MCST/play_TicTacToe_human.py" />
+        <option value="$PROJECT_DIR$/Alpha_Zero/MCST/test.py" />
+        <option value="$PROJECT_DIR$/Alpha_Zero/MCST/AtariPong.py" />
+        <option value="$PROJECT_DIR$/Alpha_Zero/MCST/my_mcst.py" />
+        <option value="$PROJECT_DIR$/Alpha_Zero/MCST/PlayUCT.py" />
+        <option value="$PROJECT_DIR$/Alpha_Zero/MCST/original_code.py" />
+        <option value="$PROJECT_DIR$/Alpha_Zero/MCST/node.py" />
+        <option value="$PROJECT_DIR$/Alpha_Zero/MCST/tic_tac_toe.py" />
+        <option value="$PROJECT_DIR$/Alpha_Zero/MCST/MCTSNode.py" />
+        <option value="$PROJECT_DIR$/Alpha_Zero/MCST/run.py" />
+        <option value="$PROJECT_DIR$/Alpha_Zero/MCST/MCST.py" />
+        <option value="$PROJECT_DIR$/Alpha_Zero/MCST/TicTacToe.py" />
+        <option value="$USER_HOME$/Master-Thesis/Code/05_AID_dataset_mvp/00_metadata_extractor.py" />
+        <option value="$PROJECT_DIR$/Attention/model.py" />
+        <option value="$PROJECT_DIR$/Attention/train.py" />
+        <option value="$PROJECT_DIR$/Attention/utils.py" />
+        <option value="$PROJECT_DIR$/Alpha_Zero/UCB/UCB.py" />
+        <option value="$PROJECT_DIR$/mastering_the_game_of_go_without_human_knowledge/MCST/MCST.py" />
+        <option value="$PROJECT_DIR$/mastering_the_game_of_go_without_human_knowledge/MCST/TicTacToe.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="67" />
-    <option name="y" value="25" />
-    <option name="width" value="888" />
-    <option name="height" value="1055" />
+    <option name="y" value="-2" />
+    <option name="width" value="2560" />
+    <option name="height" value="1602" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -86,20 +238,35 @@
               <item name="Paper-Implementation" type="b2602c69:ProjectViewProjectNode" />
               <item name="Paper-Implementation" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="Paper-Implementation" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Paper-Implementation" type="462c0819:PsiDirectoryNode" />
+              <item name="mastering_the_game_of_go_without_human_knowledge" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Paper-Implementation" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Paper-Implementation" type="462c0819:PsiDirectoryNode" />
+              <item name="mastering_the_game_of_go_without_human_knowledge" type="462c0819:PsiDirectoryNode" />
+              <item name="MCST" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/test.py" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/mastering_the_game_of_go_without_human_knowledge/MCST/run.py" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Alpha_Zero/TicTacToe" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -114,7 +281,7 @@
     </option>
   </component>
   <component name="RunManager">
-    <configuration name="train" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="train" type="PythonConfigurationType" factoryName="Python">
       <module name="Paper-Implementation" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -122,12 +289,12 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/mastering_the_game_of_go_without_human_knowledge/MCST" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/plot_results.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/mastering_the_game_of_go_without_human_knowledge/MCST/run.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -136,11 +303,6 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Python.train" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -161,6 +323,52 @@
       <workItem from="1555668976383" duration="5350000" />
       <workItem from="1555747404220" duration="12651000" />
       <workItem from="1555828950956" duration="6695000" />
+      <workItem from="1555924756086" duration="11681000" />
+      <workItem from="1556087489260" duration="21000" />
+      <workItem from="1556111111601" duration="2229000" />
+      <workItem from="1556113375217" duration="28000" />
+      <workItem from="1556220401102" duration="6352000" />
+      <workItem from="1556264821278" duration="91000" />
+      <workItem from="1556275490124" duration="626000" />
+      <workItem from="1556279356167" duration="1708000" />
+      <workItem from="1556298872900" duration="7498000" />
+      <workItem from="1557128808464" duration="21000" />
+      <workItem from="1557576878733" duration="16968000" />
+      <workItem from="1557644757771" duration="9242000" />
+      <workItem from="1557682429983" duration="6806000" />
+      <workItem from="1557752745257" duration="19000" />
+      <workItem from="1558701497572" duration="2018000" />
+      <workItem from="1558704726691" duration="60000" />
+      <workItem from="1558865073909" duration="111000" />
+      <workItem from="1559070397706" duration="2138000" />
+      <workItem from="1559111268389" duration="50000" />
+      <workItem from="1559813259400" duration="38000" />
+      <workItem from="1559993034874" duration="7893000" />
+      <workItem from="1560073830896" duration="10353000" />
+      <workItem from="1560156517030" duration="3468000" />
+      <workItem from="1560166132169" duration="1407000" />
+      <workItem from="1560235104421" duration="545000" />
+      <workItem from="1560267586591" duration="8065000" />
+      <workItem from="1560283298124" duration="599000" />
+      <workItem from="1560319413251" duration="605000" />
+      <workItem from="1560584553082" duration="20617000" />
+      <workItem from="1560691905998" duration="5641000" />
+      <workItem from="1560697934174" duration="102000" />
+      <workItem from="1560760549725" duration="85000" />
+      <workItem from="1560845063900" duration="903000" />
+      <workItem from="1560846709828" duration="599000" />
+      <workItem from="1561912116592" duration="8526000" />
+      <workItem from="1561963641966" duration="58000" />
+      <workItem from="1561982014115" duration="897000" />
+      <workItem from="1561982940467" duration="3920000" />
+      <workItem from="1561986920223" duration="378000" />
+      <workItem from="1561987365240" duration="2071000" />
+      <workItem from="1561989804382" duration="6180000" />
+      <workItem from="1562049371914" duration="11554000" />
+      <workItem from="1562067252697" duration="88000" />
+      <workItem from="1562074703170" duration="131000" />
+      <workItem from="1562265309103" duration="1723000" />
+      <workItem from="1562306443915" duration="9000" />
     </task>
     <task id="LOCAL-00001" summary="add cartpole">
       <created>1555604784839</created>
@@ -215,18 +423,42 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="56596000" />
+    <option name="totallyTimeSpent" value="220718000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="67" y="25" width="1853" height="1055" extended-state="6" />
+    <frame x="0" y="-2" width="2560" height="1602" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.14333148" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.13564041" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32948583" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49960223" visible="true" weight="0.24973767" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.31209505" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" weight="0.32937366" />
+      <window_info anchor="bottom" id="Database Changes" order="9" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5003978" side_tool="true" weight="0.25050917" />
+      <window_info anchor="bottom" id="Terminal" order="11" weight="0.32937366" />
+      <window_info anchor="bottom" id="Python Console" order="12" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="SciView" order="3" weight="0.016602103" />
+      <window_info anchor="right" id="Database" order="4" />
+    </layout>
+    <layout-to-restore>
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1283896" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.36717063" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.35313174" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.31209505" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -239,9 +471,9 @@
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="SciView" order="3" />
+      <window_info anchor="right" id="SciView" order="3" weight="0.016602103" />
       <window_info anchor="right" id="Database" order="4" />
-    </layout>
+    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -257,81 +489,97 @@
     <option name="LAST_COMMIT_MESSAGE" value="Add whole repo" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Paper_Implementation$train.coverage" NAME="train Coverage Results" MODIFIED="1555842613469" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Paper_Implementation$train.coverage" NAME="train Coverage Results" MODIFIED="1562268599704" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/mastering_the_game_of_go_without_human_knowledge/MCST" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/train.py">
+    <entry file="file://$PROJECT_DIR$/utils.py" />
+    <entry file="file://$PROJECT_DIR$/train.py" />
+    <entry file="file://$PROJECT_DIR$/DQN_Model.py" />
+    <entry file="file://$PROJECT_DIR$/DQN_brain.py" />
+    <entry file="file://$PROJECT_DIR$/test.py" />
+    <entry file="file://$PROJECT_DIR$/plot_results.py" />
+    <entry file="file://$PROJECT_DIR$/pyplot_multiple_y-axis.png" />
+    <entry file="file://$PROJECT_DIR$/Alpha_Zero/Minmax/Ads_CTR_Optimisation.csv" />
+    <entry file="file://$PROJECT_DIR$/Alpha_Zero/Minmax/simple_minmax.py" />
+    <entry file="file://$PROJECT_DIR$/Alpha_Zero/Minmax/minmax.py" />
+    <entry file="file://$PROJECT_DIR$/Attention/tutorial.py" />
+    <entry file="file://$PROJECT_DIR$/Double_Q_Learning/DQN_Model.py" />
+    <entry file="file://$PROJECT_DIR$/Alpha_Zero/TicTacToe/mcts.py" />
+    <entry file="file://$PROJECT_DIR$/Alpha_Zero/TicTacToe/tictactoe.py" />
+    <entry file="file://$PROJECT_DIR$/Double_Q_Learning/utils.py" />
+    <entry file="file://$PROJECT_DIR$/Alpha_Zero/MCST/AtariPong.py" />
+    <entry file="file://$PROJECT_DIR$/Alpha_Zero/MCST/test.py" />
+    <entry file="file://$PROJECT_DIR$/Double_Q_Learning/train.py" />
+    <entry file="file://$PROJECT_DIR$/Double_Q_Learning/DQN_brain.py" />
+    <entry file="file://$PROJECT_DIR$/Alpha_Zero/MCST/play_TicTacToe_human.py" />
+    <entry file="file://$PROJECT_DIR$/Alpha_Zero/MCST/PlayUCT.py" />
+    <entry file="file://$PROJECT_DIR$/Alpha_Zero/MCST/original_code.py" />
+    <entry file="file://$PROJECT_DIR$/Alpha_Zero/MCST/MCTSNode.py" />
+    <entry file="file://$USER_HOME$/Master-Thesis/Code/05_AID_dataset_mvp/00_metadata_extractor.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3434">
-          <caret line="210" column="42" selection-start-line="208" selection-start-column="19" selection-end-line="210" selection-end-column="42" />
+        <state relative-caret-position="340">
+          <caret line="25" column="36" lean-forward="true" selection-start-line="25" selection-start-column="36" selection-end-line="25" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Alpha_Zero/MCST/TicTacToe.py" />
+    <entry file="file://$PROJECT_DIR$/Alpha_Zero/MCST/run.py" />
+    <entry file="file://$PROJECT_DIR$/Alpha_Zero/MCST/MCST.py" />
+    <entry file="file://$PROJECT_DIR$/Alpha_Zero/UCB/UCB-1-results.png" />
+    <entry file="file://$PROJECT_DIR$/Alpha_Zero/UCB/UCB.py" />
+    <entry file="file://$PROJECT_DIR$/Attention/train.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="11" column="56" selection-start-line="11" selection-start-column="56" selection-end-line="11" selection-end-column="56" />
           <folding>
-            <element signature="e#0#10#0" expanded="true" />
+            <element signature="e#0#11#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/utils.py">
+    <entry file="file://$PROJECT_DIR$/Attention/utils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="850">
+          <caret line="55" selection-start-line="55" selection-end-line="55" />
+          <folding>
+            <element signature="e#0#49#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mastering_the_game_of_go_without_human_knowledge/MCST/MCST.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1173">
+          <caret line="71" selection-start-line="71" selection-end-line="71" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mastering_the_game_of_go_without_human_knowledge/MCST/TicTacToe.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1037">
+          <caret line="61" column="45" selection-start-line="61" selection-start-column="45" selection-end-line="61" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Attention/model.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="20" column="44" selection-start-line="20" selection-start-column="44" selection-end-line="20" selection-end-column="44" />
+          <folding>
+            <element signature="e#0#75#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mastering_the_game_of_go_without_human_knowledge/MCST/run.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="4" selection-start-line="4" selection-end-line="4" />
-          <folding>
-            <element signature="e#1#19#0" expanded="true" />
-          </folding>
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/train.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="697">
-          <caret line="95" column="20" selection-start-line="95" selection-start-column="20" selection-end-line="95" selection-end-column="25" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DQN_Model.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="23" selection-start-line="5" selection-start-column="23" selection-end-line="5" selection-end-column="23" />
-          <folding>
-            <element signature="e#0#58#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DQN_brain.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="58">
-          <caret line="112" selection-start-line="112" selection-end-line="116" selection-end-column="52" />
-          <folding>
-            <element signature="e#0#17#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="34" lean-forward="true" selection-start-line="19" selection-start-column="34" selection-end-line="19" selection-end-column="34" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/plot_results.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="37" column="35" selection-start-line="37" selection-start-column="35" selection-end-line="37" selection-end-column="35" />
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pyplot_multiple_y-axis.png">
-      <provider selected="true" editor-type-id="images" />
     </entry>
   </component>
 </project>
