@@ -1,27 +1,27 @@
 import gym
 import numpy as np
 import argparse
-from utils import preprocess, save_to_file
+from utils import preprocess, save_to_file, choose_game
 from DQN_brain import DQN_Agent
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--game_name', type=str, default='PongDeterministic-v4')
+parser.add_argument('--game_name', type=str, default='BREAKOUT')
 parser.add_argument('--image_sequence_size', type=int, default=4)
-parser.add_argument('--max_no_games', type=int, default=400)
+parser.add_argument('--max_no_games', type=int, default=8000) # 0
 parser.add_argument('--observation_start', type=int, default=50)
 parser.add_argument('--target_frequency_update', type=int, default=1000)
-parser.add_argument('--action_space', type=int, default=3)
-parser.add_argument('--save_every', type=int, default=100)
-parser.add_argument('--print_every', type=int, default=25)
+parser.add_argument('--save_every', type=int, default=500) # 0
+parser.add_argument('--print_every', type=int, default=250) # 0
 parser.add_argument('--checkpoint_name', type=str, default='')
-parser.add_argument('--display', type=bool, default=True)
+parser.add_argument('--display', type=bool, default=False)
 args = parser.parse_args()
 
 
 if __name__ == "__main__":
 
-    env = gym.make(args.game_name)
-    DQN = DQN_Agent(args.action_space)
+
+    env = gym.make(choose_game(args.game_name))
+    DQN = DQN_Agent(args.game_name)
     DQN.load_weights(args.checkpoint_name)
 
     total_score = []
@@ -83,6 +83,7 @@ if __name__ == "__main__":
                                       np.mean(total_loss),
                                       DQN.epsilon,
                                       len(DQN.experience)))
+
                         list_training_information.append((episode, np.mean(DQN.Q_list), np.sum(total_score)/args.print_every, DQN.epsilon))
                         save_to_file(list_training_information)
                         total_score = []
@@ -90,7 +91,7 @@ if __name__ == "__main__":
                         DQN.Q_list = []
 
                     if episode % args.save_every == 0:
-                        #DQN.save_weights(episode)
+                        DQN.save_weights(episode)
                         print('Weights saved!')
 
                     break

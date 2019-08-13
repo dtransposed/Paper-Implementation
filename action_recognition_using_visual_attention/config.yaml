@@ -1,0 +1,35 @@
+dataset_save_dir: ROOT DIR OF YOUR PROJECT/HMDB_dataset
+test_dir: ROOT DIR OF YOUR PROJECT/HMDB_dataset/test
+prediction_save_dir: ROOT DIR OF YOUR PROJECT/HMDB_predictions
+model_save_dir: ROOT DIR OF YOUR PROJECT/HDMB_models/
+data_creation_parameters:
+  GPU_id: 0
+  spawn_dataset: True
+  sequence_len: 30
+  display_training_data: False
+training_parameters:
+  base_type: VGG
+  batch_size: 16
+  epochs: 10
+  lstm_parameters:
+  - 256
+  model_type: ConvALSTM
+  no_classes: 51
+  penalty_coeff: 0.5
+  train_base: false
+  use_dropout: true
+  weight_decay: 0
+testing_parameters:
+  base_type: VGG
+  model_type: ConvALSTM
+  current_model_to_load: conv_alstm_6.h5
+  display_test_data: False
+
+
+
+
+
+
+
+
+

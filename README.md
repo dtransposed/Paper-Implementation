@@ -14,7 +14,7 @@ Description: Using DQN to train an RL agent to play two ATARI games: Pong and Br
 
 ### 2.Action Recognition using Visual Attention (Sharma et al. 2016)
 
-<img src="<https://github.com/dtransposed/dtransposed.github.io/assets/8/3002.gif"> 
+<img src="<https://github.com/dtransposed/dtransposed.github.io/assets/8/3002.gif" width="300"> 
 
 Source: [research paper](<http://shikharsharma.com/projects/action-recognition-attention/>) 
 

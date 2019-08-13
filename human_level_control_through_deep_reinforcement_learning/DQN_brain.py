@@ -4,14 +4,25 @@ from tensorflow.keras import losses
 from collections import deque
 import random
 import numpy as np
-from DQN_Model import DQN_Model
+from DQN_model import DQN_Model
 
 class DQN_Agent:
 
-    def __init__(self, action_space):
+    def __init__(self, game_name):
+
+        self.game_name = game_name
+
+        if self.game_name == 'PONG':
+            self.action_space = 3
+
+        elif self.game_name == 'BREAKOUT':
+            self.action_space = 4
+
+        else:
+            ValueError('Error...')
+
         self.state_shape = (84, 84, 4)
-        self.action_space = action_space
-        self.finish_greedy = 500000
+        self.finish_greedy = 5000000
         self.no_frames = 1
         self.gamma = 0.99
         self.epsilon_start = 1.0
@@ -22,35 +33,73 @@ class DQN_Agent:
         self.model = self.build_model()
         self.target_model = self.build_model()
         self.batch_size = 32
-        self.experience = deque(maxlen=100000)
+        self.experience = deque(maxlen=50000)
         self.Q_list = []
 
     def atari_to_dqn(self, atari_action):
-        # ATARI: 0: nothing, 1: nothing, 2: up, 3: down, 4: up,5: down
+        # ATARI PONG: 0: nothing, 1: nothing, 2: up, 3: down, 4: up,5: down
+        # ATARI PONG: 0: start, 1: nothing, 2: right, 3: left
 
-        action_up = 0
-        action_down = 1
-        action_nothing = 2
-        dict_atari_to_dqn = {0: action_nothing,
-                             1: action_nothing,
-                             2: action_up,
-                             3: action_down,
-                             4: action_up,
-                             5: action_down}
 
-        return dict_atari_to_dqn[atari_action]
+        if self.game_name == 'PONG':
+
+            action_up = 0
+            action_down = 1
+            action_nothing = 2
+
+            dict_atari_to_dqn_pong = {0: action_nothing,
+                                      1: action_nothing,
+                                      2: action_up,
+                                      3: action_down,
+                                      4: action_up,
+                                      5: action_down}
+
+            return dict_atari_to_dqn_pong[atari_action]
+
+        elif self.game_name == 'BREAKOUT':
+
+            action_right = 0
+            action_left = 1
+            action_nothing = 2
+            action_start = 3
+
+
+            dict_atari_to_dqn_breakout = {0: action_nothing,
+                                          1: action_start,
+                                          2: action_right,
+                                          3: action_left}
+
+            return dict_atari_to_dqn_breakout[atari_action]
 
     def dqn_to_atari(self, dqn_action):
-        # DQN 0: nothing, 1: up, 2: down
+        # DQN PONG 0: nothing, 1: up, 2: down
+        # DQN BREAKOUT 0: nothing, 1: right , 2: left , 3 start
 
-        action_up = 0
-        action_down = 1
-        action_nothing = 2
-        dict_dqn_to_atari = {action_nothing: 0,
-                             action_up: 2,
-                             action_down: 3}
+        if self.game_name == 'PONG':
 
-        return dict_dqn_to_atari[dqn_action]
+            action_up = 0
+            action_down = 1
+            action_nothing = 2
+
+            dict_dqn_to_atari_pong = {action_nothing: 0,
+                                      action_up: 2,
+                                      action_down: 3}
+
+            return dict_dqn_to_atari_pong[dqn_action]
+
+        elif self.game_name == 'BREAKOUT':
+
+            action_right = 0
+            action_left = 1
+            action_nothing = 2
+            action_start = 3
+
+            dict_dqn_to_atari_breakout = {action_nothing: 0,
+                                          action_start: 1,
+                                          action_right: 2,
+                                          action_left: 3}
+
+            return dict_dqn_to_atari_breakout[dqn_action]
 
     def uint_to_float(self, state):
         return state.astype('float32') / 255

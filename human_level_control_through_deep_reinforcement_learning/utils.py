@@ -15,3 +15,11 @@ def save_to_file(some_list):
     with open('training_data.data', 'wb') as fp:
         pickle.dump(some_list, fp)
         print('Training data dumped to pickle.')
+
+def choose_game(game_name):
+    if game_name == 'PONG':
+        return 'PongDeterministic-v4'
+    elif game_name == 'BREAKOUT':
+        return 'BreakoutDeterministic-v4'
+    else:
+        raise ValueError('An invalid game name chosen!')
