@@ -1,7 +1,7 @@
 # Action Recognition Using Visual Attention
 
 
-Soft attention based model for the task of action recognition in videos. Based on [1](http://shikharsharma.com/projects/action-recognition-attention/) and [2](https://kgavrilyuk.github.io/videolstm.pdf).
+Soft attention based model for the task of action recognition in videos. Based on research papers [1](http://shikharsharma.com/projects/action-recognition-attention/) and [2](https://kgavrilyuk.github.io/videolstm.pdf).
 
 <img src="https://github.com/dtransposed/Paper-Implementation/blob/master/action_recognition_using_visual_attention/images/3001.gif" width="300"> 
 
@@ -14,12 +14,12 @@ Root Path
 ├── HMDB_dataset (empty)
 ├── HMDB_predictions (empty)
 └── HDMB_models (empty)
-├── HMDB_videos (get dataset from [here](http://serre-lab.clps.brown.edu/resource/hmdb-a-large-human-motion-database/#Downloads)
+├── HMDB_videos (get dataset from http://serre-lab.clps.brown.edu/resource/hmdb-a-large-human-motion-database/#Downloads)
 |	├── brush_hair
 |	├── cartwheel
 |	├── catch
 |	├── ...
-└── splits (get splits from [here](http://serre-lab.clps.brown.edu/resource/hmdb-a-large-human-motion-database/#Downloads)
+└── splits (get splits from http://serre-lab.clps.brown.edu/resource/hmdb-a-large-human-motion-database/#Downloads)
 	├── brush_hair_test_split1.txt
 	├── brush_hair_test_split2.txt
 	└── brush_hair_test_split3.txt
@@ -36,9 +36,9 @@ To run the project:
 
 2. Edit ```config.yaml```. Firstly, fill out the missing paths with your root path. Secondly, alter parameters to your liking.
 
-3. Run ```attention_hmdb_train.py``` to train your model. During training some artifacts will be saved in ./HDMB_models/: tensorboard logs, intermidiate models, plots of loss, accuracy and f1 score (empty plot, f1 score cannot be computed for multinomial classification problem).
+3. Run ```attention_hmdb_train.py``` to train your model. During training some artifacts will be saved in ```HDMB_models```: tensorboard logs, intermidiate models, plots of loss, accuracy and f1 score (empty plot, f1 score cannot be computed for multinomial classification problem).
 
-4. Run ```attention_hmdb_predict.py``` to test your model. This will generate images (frame overlaid with heatmaps) in ./HDMB_predictions/ and return final test accuracy. 
+4. Run ```attention_hmdb_predict.py``` to test your model. This will generate images (frame overlaid with heatmaps) in ```HDMB_predictions``` and return final test accuracy. 
 
 ## Additional Information
 
