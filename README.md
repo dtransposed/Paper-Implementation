@@ -12,7 +12,15 @@ Source: [research paper](https://web.stanford.edu/class/psych209/Readings/MnihEt
 
 Description: Using DQN to train an RL agent to play two ATARI games: Pong and Breakout.
 
-### 2.Mastering the Game of Go without Human Knowledge ( Silver et al. 2017)
+### 2.Action Recognition using Visual Attention (Sharma et al. 2016)
+
+<img src="<https://github.com/dtransposed/dtransposed.github.io/assets/8/3002.gif"> 
+
+Source: [research paper](<http://shikharsharma.com/projects/action-recognition-attention/>) 
+
+Description: Soft attention based model for the task of action recognition in videos. I have additionally implemented parts of this [research paper](<https://kgavrilyuk.github.io/videolstm.pdf>) in this repository.
+
+### 3.Mastering the Game of Go without Human Knowledge ( Silver et al. 2017)
 
 ... in progress ...
 
