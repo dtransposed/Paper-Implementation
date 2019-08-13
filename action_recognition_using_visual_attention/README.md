@@ -44,5 +44,7 @@ To run the project:
 
 You can read about the project on my personal blog – [dtransposed](https://dtransposed.github.io/blog/Action-Recognition-Attention.html)
 
+Sadly, I cannot upload pre-trained models due to their large size. If you nevertheless wish to obtain them, please reach out to me directly!
+
 
 
