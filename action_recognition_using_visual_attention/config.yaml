@@ -3,27 +3,27 @@ test_dir: ROOT DIR OF YOUR PROJECT/HMDB_dataset/test
 prediction_save_dir: ROOT DIR OF YOUR PROJECT/HMDB_predictions
 model_save_dir: ROOT DIR OF YOUR PROJECT/HDMB_models/
 data_creation_parameters:
-  GPU_id: 0
-  spawn_dataset: True
+  GPU_id: 0	# which GPU should be used (can be usually omitted)
+  spawn_dataset: True	# set this to true to extract HMDB-51 dataset for the first time
   sequence_len: 30
-  display_training_data: False
-training_parameters:
+  display_training_data: False	# set this to true to see the raw testing input to the network
+training_parameters:	# used for training routine
   base_type: VGG
   batch_size: 16
   epochs: 10
   lstm_parameters:
-  - 256
-  model_type: ConvALSTM
+  - 256	
+  model_type: ConvALSTM	# set this ALSTM or ConvALSTM
   no_classes: 51
   penalty_coeff: 0.5
-  train_base: false
+  train_base: false	# set this to true to train VGG-16 (not recommended)
   use_dropout: true
   weight_decay: 0
-testing_parameters:
+testing_parameters:	# used in inference type
   base_type: VGG
-  model_type: ConvALSTM
-  current_model_to_load: conv_alstm_6.h5
-  display_test_data: False
+  model_type: ConvALSTM	# set this ALSTM or ConvALSTM
+  current_model_to_load: conv_alstm_6.h5	# model to use at inference time. ConvALSTM model should be located in ./HMDB_models/ConvALSTM/ ; ALSTM model should be located in ./HMDB_models/ALSTM/ 
+  display_test_data: False	# set this to true to see the raw training input to the network
 
 
 

@@ -12,9 +12,11 @@ Source: [research paper](https://web.stanford.edu/class/psych209/Readings/MnihEt
 
 Description: Using DQN to train an RL agent to play two ATARI games: Pong and Breakout.
 
-### 2.Action Recognition using Visual Attention (Sharma et al. 2016)
+
 
 <img src="https://github.com/dtransposed/Paper-Implementation/blob/master/action_recognition_using_visual_attention/images/3001.gif" width="300"> 
+
+### 2.Action Recognition using Visual Attention (Sharma et al. 2016)
 
 Source: [research paper](<http://shikharsharma.com/projects/action-recognition-attention/>) 
 
